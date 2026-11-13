@@ -27,12 +27,6 @@ jobs:
           port: ${{ secrets.SSH_PORT || 22 }}
           source: "."
           target: "/var/www/eladoingatlan"
-          ignore: |
-            .env
-            .env.*
-            data/
-            node_modules/
-            .git/
 
       - name: Remote Build and PM2 Restart
         uses: appleboy/ssh-action@v1.0.3
