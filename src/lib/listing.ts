@@ -204,6 +204,6 @@ export const UTILITY_PHOTOS = [
     alt: "A csempézett fürdő. A mosdócsap fölötti tükör fölött látszik a befalazott ajtó helye.",
     title: "Csempe és vezetékes víz",
     caption:
-      "A fürdő csempézve van, vezetékes vízzel. Már nem a konyhából nyílik: a mosdócsap fölötti tükör fölött látszik a befalazott ajtó helye.",
+      "A fürdő csempézve van, a burkolat mögött pedig a már kicserélt, modern ötrétegű vízcsövek húzódnak. Már nem a konyhából nyílik: a mosdócsap fölötti tükör fölött látszik a befalazott ajtó helye.",
   },
 ] as const;
