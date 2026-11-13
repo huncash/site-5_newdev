@@ -1,0 +1,63 @@
+name: Deploy Eladoingatlan (Port 5000)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Copy files to VPS via SCP (preserving .env and data)
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          source: "."
+          target: "/var/www/eladoingatlan"
+          ignore: |
+            .env
+            .env.*
+            data/
+            node_modules/
+            .git/
+
+      - name: Remote Build and PM2 Restart
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            cd /var/www/eladoingatlan
+
+            # Függőségek telepítése és tiszta build
+            npm ci
+            npm run build
+
+            # Régi PM2 folyamatok eltakarítása (mindkét névváltozat)
+            pm2 delete eladoingatlan 2>/dev/null || true
+            pm2 delete eladoingatlan-szcenario 2>/dev/null || true
+
+            # Újraindítás a 5000-es porton
+            PORT=5000 pm2 start npm --name "eladoingatlan" --cwd /var/www/eladoingatlan -- run start
+
+            # Egészségellenőrzés (vár pár másodpercet, hogy felálljon a Next.js)
+            sleep 3
+            curl -f http://127.0.0.1:5000/ || (echo "Health check failed!" && exit 1)
+
+            # Mentés
+            pm2 save

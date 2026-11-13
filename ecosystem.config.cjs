@@ -1,16 +1,16 @@
-// PM2 — eladoingatlan.szcenario.hu → 127.0.0.1:5140
-// TILOS: site-1..4 / 3000–3003 / szcenario :5100
-// Env: helyezz .env.production-t a cwd-be (Next betölti).
+// PM2 — eladoingatlan.szcenario.hu → 127.0.0.1:5000
+// Port: PORT env only. Do not pass --port (package.json start is "next start").
+// Production cwd: /var/www/eladoingatlan
 
-const CWD = process.env.ELADOINGATLAN_DIR || __dirname;
+const CWD = process.env.ELADOINGATLAN_DIR || "/var/www/eladoingatlan";
 
 module.exports = {
   apps: [
     {
-      name: "eladoingatlan-szcenario",
+      name: "eladoingatlan",
       cwd: CWD,
       script: "node_modules/next/dist/bin/next",
-      args: "start --port 5140",
+      args: "start --hostname 127.0.0.1",
       instances: 1,
       exec_mode: "fork",
       interpreter: "node",
@@ -21,7 +21,7 @@ module.exports = {
       merge_logs: true,
       env: {
         NODE_ENV: "production",
-        PORT: "5140",
+        PORT: "5000",
         HOSTNAME: "127.0.0.1",
       },
       out_file: "/var/log/eladoingatlan/out.log",

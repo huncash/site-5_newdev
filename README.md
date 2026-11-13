@@ -1,6 +1,6 @@
 # eladoingatlan.szcenario.hu
 
-Lean Next.js listing site for the Kismaros–Börzsönyliget property. Lives under the Szcenárió project tree; runs on **port 5140** (separate from `vrgo.hu` / site-1 on 3000).
+Lean Next.js listing site for the Kismaros–Börzsönyliget property. Production listens on **port 5000** (`PORT`; `next start` has no `--port` flag). PM2 process: `eladoingatlan`, cwd `/var/www/eladoingatlan`. The site is the root of `eladoingatlan.szcenario.hu` (no `basePath`).
 
 ## Local
 
@@ -8,7 +8,7 @@ Lean Next.js listing site for the Kismaros–Börzsönyliget property. Lives und
 cd eladoingatlan
 npm install
 cp .env.example .env.local   # set RECIPIENT_ELADOINGATLAN + SMTP_*
-npm run dev                  # http://localhost:5140
+npm run dev                  # http://localhost:5000
 ```
 
 ## Build notes
@@ -19,4 +19,6 @@ npm run dev                  # http://localhost:5140
 
 ## Nginx (sketch)
 
-Proxy `eladoingatlan.szcenario.hu` → `http://127.0.0.1:5140` (see `../deploy/nginx/eladoingatlan.szcenario.conf`).
+Proxy `eladoingatlan.szcenario.hu` → `http://127.0.0.1:5000`.
+
+Deploy (push to `main`): `.github/workflows/deploy.yml`. The sync does not upload or delete the server `.env` / `.env.production` or the `data/` directory.
