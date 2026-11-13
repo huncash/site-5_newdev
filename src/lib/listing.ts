@@ -87,7 +87,7 @@ export const VARIANT_OFFER = {
     "A birtokbaadás és a tulajdonjog-átruházás a második részlet (2027. január 4–8.) beérkezését követően, 2027 januárjában történik meg.",
   ctaCardTitle: "Megtakarítás novemberi szerződéskötéssel: 1.200.000 Ft",
   ctaCardBody:
-    "Kössön szerződést novemberben 10% előleggel, a vételár második felét pedig ér rá 2027. január 4–8. között rendezni. Így a végleges vételár 30 M Ft helyett csak 28,8 M Ft.",
+    "Kössön szerződést novemberben 10% előleggel, a vételár második felét pedig ráér 2027. január 4–8. között rendezni. Így a végleges vételár 30 M Ft helyett csak 28,8 M Ft.",
   fixturesNote: "A jelenlegi egyszerű berendezés a házban marad",
   premiumNote:
     "Az árak fixek, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. A kétütemű novemberi kedvezménnyel a vételár 28.800.000 Ft; különben az alapár 30.000.000 Ft.",
