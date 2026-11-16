@@ -64,9 +64,9 @@ export async function POST(request: Request): Promise<Response> {
 
   const optionLabel =
     variant === "A"
-      ? "Kétütemű novemberi kedvezmény (28.800.000 Ft)"
+      ? "Novemberi szerződéskötési kedvezmény (26.600.000 Ft)"
       : variant === "B"
-        ? "Alapár (30.000.000 Ft, legkorábban 2026. nov. 10.)"
+        ? "Alapár (27.200.000 Ft, legkorábban 2026. nov. 10.)"
         : null;
   const variantLine = optionLabel ? `Konstrukció: ${optionLabel}` : "Konstrukció: nem jelölt";
   const replyTo = email ?? undefined;

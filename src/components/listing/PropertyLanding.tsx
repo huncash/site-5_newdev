@@ -714,7 +714,7 @@ export function PropertyLanding() {
               <p className="mt-3 text-lg font-medium text-[#e8b84a]">Írj nekem — megtekintést egyeztetünk.</p>
               <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
                 Használd az űrlapot, vagy — adatkezelés elfogadása után — hívd a védett számot, illetve írj közvetlen
-                emailt. Ha a kétütemű novemberi kedvezmény érdekel, jelezd az üzenetben.
+                emailt. Ha a novemberi szerződéskötési kedvezmény érdekel, jelezd az üzenetben.
               </p>
               <ListingSellerCard tone="dark" />
             </div>

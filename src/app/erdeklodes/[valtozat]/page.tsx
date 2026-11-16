@@ -18,10 +18,10 @@ export function generateMetadata({ params }: { params: Promise<{ valtozat: strin
     }
     return {
       title: {
-        absolute: `Érdeklődés — ${code === "a" ? "Kétütemű novemberi kedvezmény" : "Alapár"}`,
+        absolute: `Érdeklődés — ${code === "a" ? "Novemberi szerződéskötési kedvezmény" : "Alapár"}`,
       },
       description:
-        "Fix vételár, kétütemű novemberi kedvezmény (2. részlet: 2027. január 4–8.) és kapcsolatfelvétel közvetlenül a tulajdonossal.",
+        "Fix vételár, novemberi szerződéskötési kedvezmény (2. részlet: 2027. január 4–8.) és kapcsolatfelvétel közvetlenül a tulajdonossal.",
       robots: { index: false, follow: false },
     };
   });

@@ -34,65 +34,63 @@ export const LISTING_SELLER = {
 export type ListingVariant = "a" | "b";
 
 /**
- * a = Kétütemű novemberi kedvezmény 28,8 M · b = alapár 30 M
+ * a = Novemberi szerződéskötési kedvezmény 26,6 M · b = alapár 27,2 M
  * Nyilvános copy: csak vevői előny / fizetési ütem — tilos SZJA, adó, „év végi akció”.
  */
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
-    optionLabel: "Kétütemű novemberi kedvezmény",
-    title: "Kedvezményes vételár — 28.800.000 Ft",
-    short: "−1.200.000 Ft",
-    listPrice: "28.800.000 Ft",
-    deposit: "1. részlet (10%): szerződéskötéskor, legkésőbb 2026. november 30-ig",
-    possession:
-      "Birtokbaadás és tulajdonjog-átruházás a 2. részlet beérkezése után, 2027 januárjában",
-    bandNote: "Alapár 30.000.000 Ft − 1.200.000 Ft kétütemű novemberi kedvezménnyel",
-    perSqm: "kb. 27,5 ezer Ft/m²",
+    optionLabel: "Novemberi szerződéskötési kedvezmény",
+    title: "Kedvezményes vételár — 26.600.000 Ft",
+    short: "−600.000 Ft",
+    listPrice: "26.600.000 Ft",
+    deposit: "Foglaló (10%): 2.660.000 Ft, a szerződéskötéssel egyidejűleg, legkésőbb 2026. november 30-ig",
+    possession: "A birtokbaadást az ügyvéd által készített adásvételi szerződés rögzíti",
+    bandNote: "Alapár 27.200.000 Ft − 600.000 Ft novemberi szerződéskötési kedvezménnyel",
+    perSqm: "kb. 25,4 ezer Ft/m²",
     summary:
-      "Megtakarítás novemberi szerződéskötéssel: 1.200.000 Ft. Kössön szerződést novemberben 10% előleggel; a fennmaradó 90%-ot 2027. január 4–8. között rendezheti. Így a végleges vételár 30 M Ft helyett 28,8 M Ft.",
-    ctaLabel: "Érdeklődöm a kétütemű novemberi kedvezményre",
+      "Ha 2026. november 30-ig szerződést kötünk, és a szerződéskötéssel egyidejűleg megfizeted a foglalót (az első vételárrészletet, a vételár 10%-át), a vételár 26,6 M Ft. A foglaló ekkor 2.660.000 Ft, a második részlet (23.940.000 Ft) 2027. január 4–8. között fizetendő.",
+    ctaLabel: "Érdeklődöm a novemberi szerződéskötési kedvezményre",
   },
   b: {
     code: "b" as const,
     optionLabel: "Alapár",
-    title: "Alapár — 30.000.000 Ft",
-    short: "30.000.000 Ft",
-    listPrice: "30.000.000 Ft",
+    title: "Alapár — 27.200.000 Ft",
+    short: "27.200.000 Ft",
+    listPrice: "27.200.000 Ft",
     deposit: "Szerződés szerint",
     possession: "Azonnali — legkorábban 2026. november 10.",
-    bandNote: "Fix alapár, közvetlenül tőlem",
-    perSqm: "kb. 28,7 ezer Ft/m²",
+    bandNote: "Fix alapár, a jelenlegi berendezéssel együtt, közvetlenül tőlem",
+    perSqm: "kb. 26,0 ezer Ft/m²",
     summary:
-      "A fix alapár 30.000.000 Ft. A ház azonnal használható; a birtokbaadás legkorábban 2026. november 10-től lehetséges.",
+      "A fix alapár 27.200.000 Ft, a jelenlegi berendezéssel együtt. A ház azonnal használható; a birtokbaadás legkorábban 2026. november 10-től lehetséges.",
     ctaLabel: "Érdeklődöm az alapárra",
   },
   plotSqm: 1046,
-  basePrice: "30.000.000 Ft",
-  basePriceShort: "30 M Ft",
-  discountPrice: "28.800.000 Ft",
-  discountPriceShort: "28,8 M Ft",
-  discountAmount: "1.200.000 Ft",
-  paymentLabel: "Kétütemű novemberi kedvezmény",
-  heroBadge: "Kétütemű novemberi kedvezmény: −1.200.000 Ft",
-  heroLead:
-    "Alapár: 30.000.000 Ft. Kétütemű novemberi kedvezménnyel: 28.800.000 Ft.",
+  basePrice: "27.200.000 Ft",
+  basePriceShort: "27,2 M Ft",
+  discountPrice: "26.600.000 Ft",
+  discountPriceShort: "26,6 M Ft",
+  discountAmount: "600.000 Ft",
+  paymentLabel: "Novemberi szerződéskötési kedvezmény",
+  heroBadge: "Novemberi szerződéskötési kedvezmény: −600.000 Ft",
+  heroLead: "Ár: 27.200.000 Ft. Novemberi szerződéskötési kedvezmény: 600.000 Ft.",
   pricingHeading: "Vételár és fizetési konstrukció",
-  discountTermsTitle: "Az 1.200.000 Ft-os kétütemű novemberi kedvezmény feltétele:",
+  discountTermsTitle: "A 600.000 Ft-os novemberi szerződéskötési kedvezmény feltétele:",
   discountTerms: [
-    "Az adásvételi szerződés aláírása és a 10%-os első részlet beérkezése 2026. november 30-ig megtörténik.",
-    "A fennmaradó 90%-os második részlet megfizetése a szerződésben rögzített 2027. január 4. és 8. közötti időablakban teljesül.",
+    "Ha 2026. november 30-ig szerződést kötünk, és a szerződéskötéssel egyidejűleg megfizeted a foglalót (az első vételárrészletet, a vételár 10%-át), a vételár 26.600.000 Ft.",
+    "A foglaló ekkor 2.660.000 Ft, a második részlet (23.940.000 Ft) 2027. január 4–8. között fizetendő.",
   ] as const,
   possessionNote:
-    "A birtokbaadás és a tulajdonjog-átruházás a második részlet (2027. január 4–8.) beérkezését követően, 2027 januárjában történik meg.",
-  ctaCardTitle: "Megtakarítás novemberi szerződéskötéssel: 1.200.000 Ft",
+    "A birtokbaadás és a szerződés további feltételeit az ügyvéd által készített adásvételi szerződés rögzíti.",
+  ctaCardTitle: "Novemberi szerződéskötési kedvezmény: 600.000 Ft",
   ctaCardBody:
-    "Kössön szerződést novemberben 10% előleggel, a vételár második felét pedig ráér 2027. január 4–8. között rendezni. Így a végleges vételár 30 M Ft helyett csak 28,8 M Ft.",
-  fixturesNote: "A jelenlegi egyszerű berendezés a házban marad",
+    "Ha 2026. november 30-ig szerződést kötünk, és a szerződéskötéssel egyidejűleg megfizeted a foglalót (az első vételárrészletet, a vételár 10%-át), a vételár 26,6 M Ft. A foglaló ekkor 2.660.000 Ft, a második részlet (23.940.000 Ft) 2027. január 4–8. között fizetendő.",
+  fixturesNote: "Az ár a jelenlegi berendezéssel együtt értendő",
   premiumNote:
-    "Az árak fixek, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. A kétütemű novemberi kedvezménnyel a vételár 28.800.000 Ft; különben az alapár 30.000.000 Ft.",
+    "Az ár fix, a jelenlegi berendezéssel együtt értendő, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. Novemberi szerződéskötéssel a vételár 26.600.000 Ft; különben az alapár 27.200.000 Ft. A kedvezmény a novemberi szerződéskötéshez kötött.",
   marketNote:
-    "A részletek, a tulajdonjog fenntartás és az ütemezés szabályait az adásvételi szerződés rögzíti, ügyvéd közreműködésével.",
+    "A birtokbaadás és a szerződés további feltételeit az ügyvéd által készített adásvételi szerződés rögzíti.",
 } as const;
 
 export const FAQ_ITEMS = [
@@ -105,12 +103,12 @@ export const FAQ_ITEMS = [
     a: "A jelenlegi egyszerű berendezés a házban marad. (A tárolókból a személyes tárgyaimat elszállítom.)",
   },
   {
-    q: "Hogyan érhető el az 1.200.000 Ft-os kétütemű novemberi kedvezmény?",
-    a: "A kedvezményes 28.800.000 Ft-os vételár a kétütemű novemberi kedvezménnyel érhető el: (1) az 1. részlet (10%) szerződéskötéskor, legkésőbb 2026. november 30-ig; (2) a 2. részlet (90%) 2027. január 4–8. között banki átutalással. A szerződésben a tulajdonjog fenntartással történő eladása és a 2027. januári birtokbaadás kerül rögzítésre — mindkét fél számára kiszámítható, biztonságos átmenettel.",
+    q: "Hogyan érhető el a 600.000 Ft-os novemberi szerződéskötési kedvezmény?",
+    a: "Ha 2026. november 30-ig szerződést kötünk, és a szerződéskötéssel egyidejűleg megfizeted a foglalót (az első vételárrészletet, a vételár 10%-át), a vételár 26.600.000 Ft. A foglaló ekkor 2.660.000 Ft, a második részlet (23.940.000 Ft) 2027. január 4–8. között fizetendő. A birtokbaadás és a szerződés további feltételeit az ügyvéd által készített adásvételi szerződés rögzíti. Az ár a jelenlegi berendezéssel együtt értendő, fix, a kedvezmény a novemberi szerződéskötéshez kötött.",
   },
   {
     q: "Azonnal beköltözhetek / kiadható a ház?",
-    a: "Az alapár mellett a ház azonnal használható és lakható; birtokbaadás legkorábban 2026. november 10-től. A kétütemű novemberi kedvezménynél a 2. részlet 2027. január 4–8. között esedékes; a birtokbaadás és a tulajdonjog-átruházás a 2. részlet beérkezése után, 2027 januárjában történik. A jelenlegi piaci helyzetben az eklektikus berendezés ellenére is kiadható hosszú távú albérlőnek.",
+    a: "Az alapár mellett a ház azonnal használható és lakható; birtokbaadás legkorábban 2026. november 10-től. A novemberi szerződéskötési kedvezménynél a második részlet (23.940.000 Ft) 2027. január 4–8. között fizetendő; a birtokbaadást az ügyvéd által készített adásvételi szerződés rögzíti. A jelenlegi piaci helyzetben az eklektikus berendezés ellenére is kiadható hosszú távú albérlőnek.",
   },
   {
     q: "Hitelezhető a telek?",
@@ -133,15 +131,15 @@ export const PROCESS_STEPS = [
   },
   {
     title: "Döntés",
-    body: "Választás: kétütemű novemberi kedvezmény (28.800.000 Ft) vagy alapár (30.000.000 Ft).",
+    body: "Választás: novemberi szerződéskötési kedvezmény (26.600.000 Ft) vagy alapár (27.200.000 Ft).",
   },
   {
     title: "Szerződéskötés",
-    body: "Ügyvéd előtt. Kedvezménynél: aláírás és 10% első részlet legkésőbb 2026. november 30-ig.",
+    body: "Ügyvéd előtt. Kedvezménynél: aláírás és a 2.660.000 Ft foglaló (a vételár 10%-a) legkésőbb 2026. november 30-ig, a szerződéskötéssel egyidejűleg.",
   },
   {
     title: "Fizetés és birtokbaadás",
-    body: "Kedvezménynél a 90% 2027. január 4–8. között; birtokbaadás a 2. részlet után, 2027 januárjában. Alapárnál: szerződés szerinti ütem, legkorábban 2026. november 10.",
+    body: "Kedvezménynél a második részlet (23.940.000 Ft) 2027. január 4–8. között fizetendő; a birtokbaadást az adásvételi szerződés rögzíti. Alapárnál: szerződés szerinti ütem, legkorábban 2026. november 10.",
   },
 ] as const;
 

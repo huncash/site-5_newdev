@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s · eladoingatlan.szcenario.hu",
   },
   description:
-    "Kismaros-Börzsönyliget, zsákutca vége, az erdő sűrűjében. 1046 m² belterületi Lke-4 telek faházzal. Alapár 30.000.000 Ft; kétütemű novemberi kedvezménnyel 28.800.000 Ft. Vezetékes ivóvíz. Közvetlenül a tulajdonostól.",
+    "Kismaros-Börzsönyliget, zsákutca vége, az erdő sűrűjében. 1046 m² belterületi Lke-4 telek faházzal. Alapár 27.200.000 Ft; novemberi szerződéskötési kedvezménnyel 26.600.000 Ft. Vezetékes ivóvíz. Közvetlenül a tulajdonostól.",
   icons: {
     icon: [
       { url: "/hirdetes/favicon.ico", sizes: "any" },
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
     siteName: "eladoingatlan.szcenario.hu",
     title: "Erdei faház Börzsönyligeten — 1046 m² privát telek",
     description:
-      "Kismaros-Börzsönyliget, az erdő sűrűjében. Alapár 30 M Ft; kétütemű novemberi kedvezménnyel 28,8 M Ft. Vezetékes ivóvíz.",
+      "Kismaros-Börzsönyliget, az erdő sűrűjében. Alapár 27,2 M Ft; novemberi szerződéskötési kedvezménnyel 26,6 M Ft. Vezetékes ivóvíz.",
     images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Erdei faház Börzsönyligeten — 1046 m² privát telek",
     description:
-      "Kismaros-Börzsönyliget, az erdő sűrűjében. Alapár 30 M Ft; kétütemű novemberi kedvezménnyel 28,8 M Ft. Vezetékes ivóvíz.",
+      "Kismaros-Börzsönyliget, az erdő sűrűjében. Alapár 27,2 M Ft; novemberi szerződéskötési kedvezménnyel 26,6 M Ft. Vezetékes ivóvíz.",
     images: [OG_IMAGE.url],
   },
 };

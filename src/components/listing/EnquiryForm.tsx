@@ -105,7 +105,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         <p className="text-base font-semibold text-[#0f2e1f]">Köszönjük — az érdeklődés megérkezett.</p>
         <p className="mt-2">
           Megkaptuk az üzeneted
-          {variant ? ` (${variant === "a" ? "kétütemű novemberi kedvezmény" : "alapár"})` : ""}. Hamarosan jelentkezem
+          {variant ? ` (${variant === "a" ? "novemberi szerződéskötési kedvezmény" : "alapár"})` : ""}. Hamarosan jelentkezem
           a megadott elérhetőségen.
         </p>
       </div>
@@ -119,8 +119,8 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
           Érdeklődés:{" "}
           <span className="font-semibold">
             {variant === "a"
-              ? "Kétütemű novemberi kedvezmény — 28.800.000 Ft"
-              : "Alapár — 30.000.000 Ft (legkorábban nov. 10.)"}
+              ? "Novemberi szerződéskötési kedvezmény — 26.600.000 Ft"
+              : "Alapár — 27.200.000 Ft (legkorábban nov. 10.)"}
           </span>
         </p>
       ) : null}
