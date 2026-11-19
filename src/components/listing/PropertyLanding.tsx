@@ -20,6 +20,7 @@ import Link from "next/link";
 import { useEffect, useId, useState, type MouseEvent, type ReactNode } from "react";
 
 import { EnquiryForm } from "@/components/listing/EnquiryForm";
+import { OfferCountdown } from "@/components/listing/OfferCountdown";
 import {
   ListingMobileContact,
   ListingPhoneProvider,
@@ -241,15 +242,17 @@ export function PropertyLanding() {
                 {VARIANT_OFFER.heroBadge}
               </p>
               <h1 className="mt-4 text-3xl font-medium leading-tight text-[#f7f1e6] md:text-4xl lg:text-5xl">
-                Erdei faház a Börzsönyben, 1046&nbsp;m² privát telken
+                Fehér ablakos faház a Börzsöny erdejében
               </h1>
-              <p className="mt-4 text-base leading-relaxed text-[#f7f1e6]/95 sm:text-lg">
-                Kismaros-Börzsönyliget, zsákutca vége, az erdő sűrűjében, a Duna–Ipoly Nemzeti Park szélén. Csend,
-                árnyék, nyugalom, fix áron.
-              </p>
+              <p className="mt-4 text-base leading-relaxed text-[#f7f1e6]/95 sm:text-lg">{VARIANT_OFFER.heroLead}</p>
+              <OfferCountdown tone="dark" />
               <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/85">
-                {VARIANT_OFFER.heroLead} Kedvezményes vételár:{" "}
-                <strong className="font-semibold text-[#e8b84a]">{VARIANT_OFFER.discountPrice}</strong>.
+                Kismaros-Börzsönyliget, zsákutca vége, {VARIANT_OFFER.plotSqm}&nbsp;m² saját telek a Duna–Ipoly Nemzeti
+                Park szélén. Addig{" "}
+                <strong className="font-semibold text-[#e8b84a]">{VARIANT_OFFER.immediatePrice}</strong>, használati
+                korlátozás nélkül. További −{VARIANT_OFFER.discountAmount}:{" "}
+                <strong className="font-semibold text-[#e8b84a]">{VARIANT_OFFER.basePrice}</strong>, ha a lejártáig
+                szerződünk és a maradékot január 4–8. között utalod.
               </p>
               <a
                 href="#kapcsolat"
@@ -267,18 +270,24 @@ export function PropertyLanding() {
           <p className="mt-2 text-sm uppercase tracking-[0.14em] text-[#6b6154]">Mikroklíma &amp; szomszédság</p>
           <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-[#5a5146] sm:text-base">
             <p>
-              Itt nincs szomszéd az ablakodban, és nincs átmenő forgalom. A telek a Hörcsög utca végén áll, az erdő
-              sűrűjében. Nyáron az erdei mikroklíma átlagosan 4&nbsp;°C-kal hűvösebb, mint a Duna-parton; télen a
-              cserépkályha tölti be a házat melegével.
+              Kismaros-Börzsönyligeten, egy zsákutca végén, a Duna–Ipoly Nemzeti Park szélén áll ez a fehér ablakos
+              faház, {VARIANT_OFFER.plotSqm}&nbsp;m²-es saját telken. Nincs szomszéd az ablakban, nincs átmenő forgalom,
+              csak a fák, a madarak és a csend. Nyáron az erdei mikroklíma átlagosan 4&nbsp;°C-kal hűvösebb, mint a
+              városban, télen pedig a cserépkályha melege tölti be a házat.
+            </p>
+            <p>
+              Nem csak ingázóknak szól, sőt. Itt lakva, itt ébredve, a nyári szezonon kívüli időszakban mutatja meg
+              igazán gyönyörű arcát ez a börzsönyi, Natura 2000-es ősfás tölgyerdő.
             </p>
             <p>
               A Hörcsög utcában ezen az oldalon az elhelyezkedés ideális: az előtted lévő szomszédban állandó lakó él,
               míg a telek után lévő további két ingatlan tulajdonosai csak évente néhány alkalommal tartózkodnak kint.
-              Ez biztosítja a zavartalan nyugalmat, de elkerüli az izolációt.
+              Ez biztosítja a zavartalan nyugalmat, és van kihez szólnod, ha kell.
             </p>
             <p>
-              A ház egyszerű és szerényen berendezett felvonulási épület / hétvégi ház. Azonnal használható, de nem
-              kész luxuslakás: a belső hangulatot te alakítod ki a saját ízlésedre.
+              A meglévő ház kiváló felvonulási épület, amíg a telek középső részére felépül az álmaid háza. Az Lke-4
+              keretein belül (max. 30% beépíthetőség) ez akár 300&nbsp;m² alapterület is lehet. Addig a faház lakható
+              vászon: egy kis festéssel, burkolattal és saját bútorokkal úgy alakíthatod, ahogy neked jó.
             </p>
           </div>
 
@@ -315,7 +324,7 @@ export function PropertyLanding() {
               <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
                 <h3 className="text-lg font-medium">Klíma-előny</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                  Nyáron 4&nbsp;°C-kal hűvösebb, mint a Duna-parton; a hegyoldal naposabb foltjai mégis alkalmasak
+                  Nyáron átlagosan 4&nbsp;°C-kal hűvösebb, mint a városban; a hegyoldal naposabb foltjai mégis alkalmasak
                   napelemre és veteményesre.
                 </p>
               </article>
@@ -393,6 +402,25 @@ export function PropertyLanding() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-[#5a5146] sm:text-base">
+                <p>
+                  4×4-es autó használata javasolt az ideköltözőknek. Az elmúlt közel fél évszázadban a lakók minden
+                  évszakban feljutottak normál, kétkerék-meghajtású személyautóval is.
+                </p>
+                <p>
+                  Autó nélkül is megközelíthető, több szomszéd is így jár. Kismaros központjáig és a vasútállomásig 3–4
+                  km, kényelmes sétával 30–35 perc. Onnan a vonat 45 perc alatt a Nyugati pályaudvarra ér, így Budapest
+                  másfél órán belül elérhető.
+                </p>
+                <p>
+                  Introvertáltabb embernek ez maga a paradicsom. Van annyi állandó lakó, hogy legyen kihez szólnod,
+                  ugyanakkor napokat, heteket, akár hónapokat is eltölthetsz különösebb interakció nélkül.
+                </p>
+                <p>
+                  A fényszennyezés még közel nulla, mert a szemközti hegyoldal beépítetlen. Az ablakon kinézve a fekete,
+                  sötét erdő és a csodálatosan friss levegő fogad: díszkivilágítás és utcalámpa nincs a látképben.
+                </p>
+              </div>
             </div>
 
             <article className="mt-8 rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#0f2e1f] bg-[#efe8db] p-5 sm:p-6">
@@ -412,6 +440,11 @@ export function PropertyLanding() {
                   körül —, a hétvége a pihenés szent ideje. A völgynek tiszta, egyedi akusztikája van, a szemközti oldal
                   nem beépített. Az erdei csend és a madárcsicsergés közös kincs. Tisztelettel kérem azokat, akik
                   hétvégente a kertben tábortűz körül hangos zenét keresnek, hogy válasszanak másik helyet.
+                </p>
+                <p>
+                  Tisztelettel kérem, hogy rövid távú szálláshely létesítésére vállalkozók ne érdeklődjenek. A
+                  szerződésben ezt nem tiltom, de nem leszünk jóban, ha a házat mégis így használnád. Az itt lakók
+                  nyugalmát úgy védjük, hogy a békés zsákutcából nem csinálunk átjáróházat.
                 </p>
               </div>
             </article>
@@ -485,18 +518,26 @@ export function PropertyLanding() {
 
         <section className="mx-auto max-w-6xl scroll-mt-24 px-4 py-14 md:px-6 md:py-16" id="kozmuvek-epulet">
           <h2 className="text-3xl font-medium">Őszintén az állapotról</h2>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            A belső terek egyszerűek és eklektikusak. A ház azonnal használható és lakható, sőt, a jelenlegi piaci
-            helyzetben eklektikus berendezése ellenére is azonnal kiadható hosszú távú albérlőnek — így elkerülheted az
-            üresjáratot. Nem kész luxusházat kínálok, hanem tiszta jogi hátterű, kivételes adottságú erdei alapot.
-          </p>
+          <div className="mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-[#5a5146] sm:text-base">
+            <p>
+              A ház lakható, de nem kész, igényesen berendezett lakás. A belső terek egyszerűek és eklektikusak, a
+              jelenlegi szerény berendezéssel együtt adom át. Egy kis festéssel, burkolattal és saját bútorokkal úgy
+              alakíthatod, ahogy neked jó. Ez a ház egy jó vászon, a hangulatot te fested rá.
+            </p>
+            <p>
+              Csekély beruházást követően hosszú távra kiadható, 150–200&nbsp;ezer Ft + rezsi díjjal kalkulálva. Amíg a
+              telek középső részére megépül az új ház — az Lke-4 keretein belül akár 300&nbsp;m² alapterülettel —, a
+              meglévő faház felvonulási épületként is a helyén van.
+            </p>
+          </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
               <House className="h-5 w-5 text-[#e8b84a]" aria-hidden />
               <h3 className="mt-3 text-lg font-medium">Felépítmény</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                Azonnal használható felvonulási épület / hétvégi ház (kb. 1980), az ingatlan-nyilvántartásban
-                feltüntetve. Mellékhelyiség átalakítva — már nem a konyhából nyílik.
+                Hétvégi ház állapotú, fehér ablakos faház (kb. 1980), az ingatlan-nyilvántartásban feltüntetve.
+                Lakható, és felvonulási épületként is megállja a helyét, amíg a telek közepére felépül az új ház.
+                Mellékhelyiség átalakítva — már nem a konyhából nyílik.
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
@@ -597,26 +638,30 @@ export function PropertyLanding() {
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
               {VARIANT_OFFER.premiumNote}
             </p>
+            <OfferCountdown tone="light" />
 
-            <dl className="mt-8 grid max-w-xl gap-3 rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5 sm:p-6">
-              <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#d4c9b5] pb-3">
-                <dt className="text-sm text-[#5a5146]">Alapár</dt>
-                <dd className="text-lg font-medium text-[#241f18]">{VARIANT_OFFER.basePrice}</dd>
+            <dl className="mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
+              <div className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
+                <dt className="text-sm text-[#5a5146]">Használati korlátozás nélkül</dt>
+                <dd className="mt-1 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.immediatePrice}</dd>
+                <dd className="mt-2 text-sm leading-relaxed text-[#5a5146]">
+                  Az eredeti {VARIANT_OFFER.originalPrice} helyett, a visszaszámlálás alatt.
+                </dd>
               </div>
-              <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#d4c9b5] pb-3">
-                <dt className="text-sm text-[#5a5146]">{VARIANT_OFFER.paymentLabel}</dt>
-                <dd className="text-lg font-medium text-[#d4a017]">−{VARIANT_OFFER.discountAmount}</dd>
-              </div>
-              <div className="flex flex-wrap items-baseline justify-between gap-2 pt-1">
-                <dt className="text-sm font-medium text-[#241f18]">Kedvezményes vételár</dt>
-                <dd className="text-2xl font-medium text-[#d4a017]">{VARIANT_OFFER.discountPrice}</dd>
+              <div className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
+                <dt className="text-sm text-[#5a5146]">További −{VARIANT_OFFER.discountAmount}</dt>
+                <dd className="mt-1 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.basePrice}</dd>
+                <dd className="mt-2 text-sm leading-relaxed text-[#5a5146]">
+                  Foglaló {VARIANT_OFFER.firstInstallment} most, maradék {VARIANT_OFFER.secondInstallment} január 4–8.
+                  között, egy összegben.
+                </dd>
               </div>
             </dl>
 
             <aside className="mt-6 max-w-3xl rounded-lg border border-[#e8b84a]/50 bg-[#efe8db] p-5">
-              <p className="text-sm font-medium text-[#241f18]">{VARIANT_OFFER.discountTermsTitle}</p>
+              <p className="text-sm font-medium text-[#241f18]">{VARIANT_OFFER.scheduleTitle}</p>
               <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-[#5a5146]">
-                {VARIANT_OFFER.discountTerms.map((term) => (
+                {VARIANT_OFFER.scheduleTerms.map((term) => (
                   <li key={term}>{term}</li>
                 ))}
               </ol>
@@ -683,15 +728,18 @@ export function PropertyLanding() {
               <article className="rounded-lg border border-[#d4c9b5] border-t-4 border-t-[#e8b84a] bg-[#efe8db] p-6">
                 <h3 className="text-xl font-medium">Neked szól</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                  Ha erdei nyugalmat szeretnél korrekt, fix áron, örülsz a saját ízlésedre alakítható belső tereknek,
-                  fontos a tiszta jogi háttér, és értékeld a transzparens, 1/1 tulajdonosi felállást.
+                  Ha itt élnél, itt ébrednél, és a nyári szezonon kívül is a börzsönyi tölgyerdő a tied lenne. Szól annak
+                  is, aki felvonulási épületként használná, amíg a telek közepére megépül a saját háza, vagy csekély
+                  beruházás után hosszú távra kiadná. Ingázni lehet innen, de nem csak ingázóknak való.
                 </p>
               </article>
               <article className="rounded-lg border border-[#d4c9b5] border-t-4 border-t-[#6b6154] bg-[#efe8db] p-6">
                 <h3 className="text-xl font-medium">Nem neked szól</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                  Ha kulcsrakész luxusingatlant vársz, vagy az alku a fő szempontod — az árak fixek, nincs alkupuffer. A
-                  hétvégi hangos zenés tábortűz sem ide való (lásd a csendkódexet).
+                  Tisztelettel kérem, hogy rövid távú szálláshely létesítésére vállalkozók ne érdeklődjenek. A
+                  szerződésben ezt nem tiltom, de nem leszünk jóban, ha a házat mégis így használnád. Az itt lakók
+                  nyugalmát úgy védjük, hogy a békés zsákutcából nem csinálunk átjáróházat. Kulcsrakész luxust és alkut
+                  sem itt kell keresni.
                 </p>
               </article>
             </div>
@@ -714,7 +762,7 @@ export function PropertyLanding() {
               <p className="mt-3 text-lg font-medium text-[#e8b84a]">Írj nekem — megtekintést egyeztetünk.</p>
               <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
                 Használd az űrlapot, vagy — adatkezelés elfogadása után — hívd a védett számot, illetve írj közvetlen
-                emailt. Ha a novemberi szerződéskötési kedvezmény érdekel, jelezd az üzenetben.
+                emailt. Ha a 28.450.000 Ft-os ajánlat vagy a további 750.000 Ft engedmény érdekel, jelezd az üzenetben.
               </p>
               <ListingSellerCard tone="dark" />
             </div>

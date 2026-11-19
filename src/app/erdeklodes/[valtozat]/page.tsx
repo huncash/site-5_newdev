@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { VariantInterest } from "@/components/listing/VariantInterest";
-import type { ListingVariant } from "@/lib/listing";
+import { VARIANT_OFFER, type ListingVariant } from "@/lib/listing";
 
 const VARIANTS: ListingVariant[] = ["a", "b"];
 
@@ -18,10 +18,10 @@ export function generateMetadata({ params }: { params: Promise<{ valtozat: strin
     }
     return {
       title: {
-        absolute: `Érdeklődés — ${code === "a" ? "Novemberi szerződéskötési kedvezmény" : "Alapár"}`,
+        absolute: `Érdeklődés — ${code === "a" ? VARIANT_OFFER.a.optionLabel : VARIANT_OFFER.b.optionLabel}`,
       },
       description:
-        "Fix vételár, novemberi szerződéskötési kedvezmény (2. részlet: 2027. január 4–8.) és kapcsolatfelvétel közvetlenül a tulajdonossal.",
+        "Az elmúlt 2 év legjobb ajánlata: 28,45 M Ft használati korlátozás nélkül, vagy 27,7 M Ft januári utalással. Januártól várhatóan 30 millió körül.",
       robots: { index: false, follow: false },
     };
   });

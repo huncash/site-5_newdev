@@ -1,4 +1,5 @@
 import { appendEnquiryToFile, deliverEnquiry } from "@/lib/quote-delivery";
+import { VARIANT_OFFER } from "@/lib/listing";
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -64,9 +65,9 @@ export async function POST(request: Request): Promise<Response> {
 
   const optionLabel =
     variant === "A"
-      ? "Novemberi szerződéskötési kedvezmény (26.600.000 Ft)"
+      ? `${VARIANT_OFFER.a.optionLabel} (${VARIANT_OFFER.a.listPrice})`
       : variant === "B"
-        ? "Alapár (27.200.000 Ft, legkorábban 2026. nov. 10.)"
+        ? `${VARIANT_OFFER.b.optionLabel} (${VARIANT_OFFER.b.listPrice})`
         : null;
   const variantLine = optionLabel ? `Konstrukció: ${optionLabel}` : "Konstrukció: nem jelölt";
   const replyTo = email ?? undefined;

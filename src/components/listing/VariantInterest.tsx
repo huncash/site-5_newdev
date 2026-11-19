@@ -39,7 +39,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
           <h1 className="mt-2 max-w-3xl text-3xl font-medium sm:text-4xl">{selected.title}</h1>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
             Ugyanaz a telek ({VARIANT_OFFER.plotSqm} m²) és ugyanaz a felépítmény. Közvetlenül tőlem, 1/1 tulajdonostól.
-            Az árak fixek.
+            A visszaszámlálás alatt az ár fix. Januártól várhatóan {VARIANT_OFFER.januaryReturn}.
           </p>
 
           <section className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -101,18 +101,20 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                 <tbody>
                   <tr className={variant === "a" ? "bg-[#f5edd4]" : ""}>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
-                      Novemberi szerződéskötési kedvezmény{variant === "a" ? " · ezt nézed" : ""}
+                      {VARIANT_OFFER.a.optionLabel}
+                      {variant === "a" ? " · ezt nézed" : ""}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                       {VARIANT_OFFER.a.listPrice}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 text-[#5a5146]">
-                      −{VARIANT_OFFER.discountAmount} az alapárból
+                      {VARIANT_OFFER.a.bandNote}
                     </td>
                   </tr>
                   <tr className={variant === "b" ? "bg-[#f5edd4]" : ""}>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
-                      Alapár{variant === "b" ? " · ezt nézed" : ""}
+                      {VARIANT_OFFER.b.optionLabel}
+                      {variant === "b" ? " · ezt nézed" : ""}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                       {VARIANT_OFFER.b.listPrice}

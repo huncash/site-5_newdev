@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 
 import { trackConversion } from "@/lib/conversion";
-import type { ListingVariant } from "@/lib/listing";
+import { VARIANT_OFFER, type ListingVariant } from "@/lib/listing";
 
 const fieldClass =
   "mt-1 w-full rounded-md border border-[#d4c9b5] bg-[#fffdf8] px-3 py-2.5 text-sm text-[#241f18] outline-none focus:border-[#e8b84a]";
@@ -105,7 +105,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         <p className="text-base font-semibold text-[#0f2e1f]">Köszönjük — az érdeklődés megérkezett.</p>
         <p className="mt-2">
           Megkaptuk az üzeneted
-          {variant ? ` (${variant === "a" ? "novemberi szerződéskötési kedvezmény" : "alapár"})` : ""}. Hamarosan jelentkezem
+          {variant ? ` (${VARIANT_OFFER[variant].optionLabel})` : ""}. Hamarosan jelentkezem
           a megadott elérhetőségen.
         </p>
       </div>
@@ -118,9 +118,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-2 text-sm">
           Érdeklődés:{" "}
           <span className="font-semibold">
-            {variant === "a"
-              ? "Novemberi szerződéskötési kedvezmény — 26.600.000 Ft"
-              : "Alapár — 27.200.000 Ft (legkorábban nov. 10.)"}
+            {VARIANT_OFFER[variant].optionLabel} — {VARIANT_OFFER[variant].listPrice}
           </span>
         </p>
       ) : null}
