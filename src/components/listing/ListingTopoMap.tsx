@@ -10,9 +10,10 @@ import { LISTING_COORDS } from "@/lib/listing";
  */
 
 type ListingTopoMapProps = {
-  /** helyi túra / regionális áttekintő */
   mode: "local" | "regional";
   caption: string;
+  credit: string;
+  ariaLabel: string;
 };
 
 type LeafletMap = {
@@ -102,7 +103,7 @@ function loadLeaflet(): Promise<void> {
   return leafletLoader;
 }
 
-export function ListingTopoMap({ mode, caption }: ListingTopoMapProps) {
+export function ListingTopoMap({ mode, caption, credit, ariaLabel }: ListingTopoMapProps) {
   const mapId = useId().replace(/:/g, "");
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<LeafletMap | null>(null);
@@ -132,7 +133,7 @@ export function ListingTopoMap({ mode, caption }: ListingTopoMapProps) {
         }).addTo(map);
         L.marker([LISTING_COORDS.lat, LISTING_COORDS.lng], { icon: createCdnMarkerIcon(L) })
           .addTo(map)
-          .bindPopup("Kismaros-Börzsönyliget · Hörcsög utca");
+          .bindPopup("Kismaros-Börzsönyliget");
         mapRef.current = map;
       })
       .catch(() => {
@@ -155,11 +156,10 @@ export function ListingTopoMap({ mode, caption }: ListingTopoMapProps) {
         ref={containerRef}
         className="h-[280px] w-full sm:h-[360px] md:h-[420px]"
         role="img"
-        aria-label={mode === "local" ? "OpenTopoMap turistatérkép a telek körül" : "OpenTopoMap regionális áttekintő"}
+        aria-label={ariaLabel}
       />
       <figcaption className="border-t border-[#d4c9b5] px-4 py-3 text-sm leading-relaxed text-[#5a5146]">
-        {caption}{" "}
-        <span className="text-xs text-[#6b6154]">Térkép: OpenTopoMap / OpenStreetMap.</span>
+        {caption} <span className="text-xs text-[#6b6154]">{credit}</span>
       </figcaption>
     </figure>
   );

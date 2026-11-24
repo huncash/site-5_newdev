@@ -21,7 +21,7 @@ export function generateMetadata({ params }: { params: Promise<{ valtozat: strin
         absolute: `Érdeklődés — ${code === "a" ? VARIANT_OFFER.a.optionLabel : VARIANT_OFFER.b.optionLabel}`,
       },
       description:
-        "Az elmúlt 2 év legjobb ajánlata: 28,45 M Ft használati korlátozás nélkül, vagy 27,7 M Ft januári utalással. Januártól várhatóan 30 millió körül.",
+        "November 30-ig 26.600.000 Ft, azonnali ár 27.200.000 Ft. Az ár fix, a jelenlegi berendezéssel együtt.",
       robots: { index: false, follow: false },
     };
   });

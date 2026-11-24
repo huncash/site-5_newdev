@@ -3,7 +3,8 @@
 import { useState, type FormEvent } from "react";
 
 import { trackConversion } from "@/lib/conversion";
-import { VARIANT_OFFER, type ListingVariant } from "@/lib/listing";
+import { useI18n } from "@/lib/i18n";
+import type { ListingVariant } from "@/lib/listing";
 
 const fieldClass =
   "mt-1 w-full rounded-md border border-[#d4c9b5] bg-[#fffdf8] px-3 py-2.5 text-sm text-[#241f18] outline-none focus:border-[#e8b84a]";
@@ -14,6 +15,8 @@ type EnquiryFormProps = {
 };
 
 export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) {
+  const { t, lang } = useI18n();
+  const selected = variant ? t.variants[variant] : null;
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [message, setMessage] = useState(defaultMessage);
@@ -46,6 +49,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
           website,
           consent: true,
           variant: variant ?? null,
+          lang,
         }),
       });
       let payload: { error?: string; detail?: string; ok?: boolean; mail?: boolean; file?: boolean } | null =
@@ -78,10 +82,10 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
       const code = payload?.error ?? `http_${response.status}`;
       setErrorDetail(
         response.status === 503 || code === "delivery" || code === "mail"
-          ? "A küldés átmenetileg nem elérhető a szerveren. Próbáld meg később, vagy hívd a megjelenített számot."
+          ? t.form.unavailable
           : response.status === 400
-            ? "Ellenőrizd a kitöltött mezőket, majd küldd újra."
-            : `A szerver hibát jelzett (${code}).`,
+            ? t.form.badFields
+            : `${t.form.serverError} (${code}).`,
       );
       setStatus("error");
       trackConversion("listing_enquiry_submit_error", {
@@ -90,7 +94,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         code,
       });
     } catch {
-      setErrorDetail("Hálózati hiba — ellenőrizd a kapcsolatot, majd próbáld újra.");
+      setErrorDetail(t.form.network);
       setStatus("error");
       trackConversion("listing_enquiry_submit_error", { variant: variant ?? "general" });
     }
@@ -102,11 +106,10 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         role="status"
         className="rounded-md border border-[#c5d4b8] bg-[#eef5e8] px-5 py-6 text-sm leading-relaxed text-[#1c2e1a]"
       >
-        <p className="text-base font-semibold text-[#0f2e1f]">Köszönjük — az érdeklődés megérkezett.</p>
+        <p className="text-base font-semibold text-[#0f2e1f]">{t.form.thanksTitle}</p>
         <p className="mt-2">
-          Megkaptuk az üzeneted
-          {variant ? ` (${VARIANT_OFFER[variant].optionLabel})` : ""}. Hamarosan jelentkezem
-          a megadott elérhetőségen.
+          {t.form.thanksBody}
+          {selected ? ` (${selected.label})` : ""}
         </p>
       </div>
     );
@@ -116,18 +119,18 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
     <form onSubmit={onSubmit} className="space-y-4" noValidate>
       {variant ? (
         <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-2 text-sm">
-          Érdeklődés:{" "}
+          {t.form.interest}:{" "}
           <span className="font-semibold">
-            {VARIANT_OFFER[variant].optionLabel} — {VARIANT_OFFER[variant].listPrice}
+            {selected?.label} — {selected?.price}
           </span>
         </p>
       ) : null}
       <label className="block text-sm">
-        Név
+        {t.form.name}
         <input required value={name} onChange={(event) => setName(event.target.value)} className={fieldClass} autoComplete="name" />
       </label>
       <label className="block text-sm">
-        Telefon vagy e-mail
+        {t.form.contact}
         <input
           required
           value={contact}
@@ -135,33 +138,31 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
           className={fieldClass}
           autoComplete="tel"
           inputMode="email"
-          placeholder="+36 … vagy nev@pelda.hu"
+          placeholder={t.form.placeholder}
         />
       </label>
       <label className="block text-sm">
-        Üzenet
+        {t.form.message}
         <textarea required rows={4} value={message} onChange={(event) => setMessage(event.target.value)} className={fieldClass} />
       </label>
       {/* Rejtett honeypot — nem kérünk céget / weboldalt a látogatótól */}
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
         <label>
-          Cég
+          {t.form.company}
           <input tabIndex={-1} autoComplete="off" value={company} onChange={(event) => setCompany(event.target.value)} />
         </label>
         <label>
-          Weboldal
+          {t.form.website}
           <input tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} />
         </label>
       </div>
       <p className="text-xs leading-relaxed text-[#6b6154]">
-        Beküldéssel elfogadod, hogy az adataidat csak az érdeklődés miatti kapcsolattartásra használom, és legkésőbb 30
-        napon belül törlöm.
+        {t.form.consent}
       </p>
-      {status === "invalid" ? <p className="text-sm text-[#8a3a1a]">Kérlek, töltsd ki a nevet, az elérhetőséget és az üzenetet.</p> : null}
+      {status === "invalid" ? <p className="text-sm text-[#8a3a1a]">{t.form.invalid}</p> : null}
       {status === "error" ? (
         <p className="text-sm text-[#8a3a1a]" role="alert">
-          {errorDetail ||
-            "Az üzenetet most nem sikerült elküldeni. Próbáld meg később, vagy hívd a megjelenített telefonszámot."}
+          {errorDetail || t.form.errorFallback}
         </p>
       ) : null}
       <button
@@ -169,7 +170,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         disabled={status === "sending"}
         className="rounded-md bg-[#e8b84a] px-5 py-3 text-sm font-semibold text-[#241f18] disabled:opacity-60"
       >
-        {status === "sending" ? "Küldés…" : "Érdeklődöm"}
+        {status === "sending" ? t.form.sending : t.form.submit}
       </button>
     </form>
   );

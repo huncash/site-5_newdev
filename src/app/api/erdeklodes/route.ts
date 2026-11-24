@@ -1,5 +1,5 @@
+import { copy, type Lang } from "@/lib/copy";
 import { appendEnquiryToFile, deliverEnquiry } from "@/lib/quote-delivery";
-import { VARIANT_OFFER } from "@/lib/listing";
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -63,12 +63,11 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "invalid", detail: "fields" }, { status: 400 });
   }
 
+  const rawLang = typeof data.lang === "string" ? data.lang.trim().toLowerCase() : "";
+  const lang: Lang = rawLang === "en" || rawLang === "de" || rawLang === "hu" ? rawLang : "hu";
+  const labels = copy.hu.variants;
   const optionLabel =
-    variant === "A"
-      ? `${VARIANT_OFFER.a.optionLabel} (${VARIANT_OFFER.a.listPrice})`
-      : variant === "B"
-        ? `${VARIANT_OFFER.b.optionLabel} (${VARIANT_OFFER.b.listPrice})`
-        : null;
+    variant === "A" ? labels.a.email : variant === "B" ? labels.b.email : null;
   const variantLine = optionLabel ? `Konstrukció: ${optionLabel}` : "Konstrukció: nem jelölt";
   const replyTo = email ?? undefined;
   const delivery = {
@@ -81,6 +80,7 @@ export async function POST(request: Request): Promise<Response> {
       phone ? `Telefon: ${phone}` : null,
       email ? `E-mail: ${email}` : null,
       variantLine,
+      `Nyelv: ${lang.toUpperCase()}`,
       "",
       message,
     ]

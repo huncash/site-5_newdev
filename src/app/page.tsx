@@ -5,12 +5,12 @@ import { PropertyLanding } from "@/components/listing/PropertyLanding";
 export const metadata: Metadata = {
   title: { absolute: "Erdei faház Börzsönyligeten — 1046 m² privát telek" },
   description:
-    "Kismaros-Börzsönyliget, zsákutca vége, a Börzsöny erdejében. Az elmúlt 2 év legjobb ajánlata: 28.450.000 Ft az eredeti 38 millió helyett, december elejéig.",
+    "Kismaros-Börzsönyliget, zsákutca vége. 1046 m² saját telek. Azonnali ár 27,2 M Ft; november 30-ig 26,6 M Ft. Vezetékes ivóvíz.",
   robots: { index: true, follow: true },
   openGraph: {
     title: "Erdei faház Börzsönyligeten — 1046 m² privát telek",
     description:
-      "45 perc, és a Börzsöny erdeje vesz körül. December elejéig 28,45 M Ft, az eredeti 38 millió helyett.",
+      "45 perc, és a Börzsöny erdeje vesz körül. Azonnali ár 27,2 M Ft, november 30-ig 26,6 M Ft.",
     url: "https://eladoingatlan.szcenario.hu/",
     images: [
       {

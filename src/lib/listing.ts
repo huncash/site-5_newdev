@@ -37,90 +37,85 @@ export type ListingVariant = "a" | "b";
 export const OFFER_DEADLINE = "2026-12-01T00:00:00+01:00";
 
 /**
- * A visszaszámlálás alatt a fő ajánlat 28,45 M, használati korlátozás nélkül (eredeti ár: 38 M).
- * a = további −750 ezer, 27,7 M: foglaló most, maradék 2027. jan. 4–8. egy összegben.
- * b = 28,45 M, használati korlátozás nélkül.
- * Januártól várhatóan kb. 30 M, akkor már nem sürgős.
+ * a = november 30-ig 26,6 M (foglaló 2.660.000, maradék 23.940.000 jan. 4–8.).
+ * b = azonnali, 2026-os birtokbaadás: 27,2 M.
+ * A megjelenő szöveg a copy.ts szótárban van, HU / EN / DE.
  * Nyilvános copy: tilos SZJA, adó, „év végi akció”.
  */
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
-    optionLabel: "További −750.000 Ft",
-    title: "27.700.000 Ft — további 750.000 Ft engedmény",
-    short: "−750.000 Ft",
-    listPrice: "27.700.000 Ft",
-    deposit: "Foglaló (10%): 2.770.000 Ft a 27.700.000 Ft-os árból, a visszaszámlálás lejártáig",
-    possession: "A maradék 24.930.000 Ft 2027. január 4–8. között, egy összegben",
-    bandNote: "Szerződés és foglaló még a visszaszámlálás alatt, utána januári utalás.",
-    perSqm: "kb. 26,5 ezer Ft/m²",
+    optionLabel: "November 30-i kedvezmény",
+    title: "Kedvezményes vételár — 26.600.000 Ft",
+    short: "26,6 M Ft",
+    listPrice: "26.600.000 Ft",
+    deposit: "Foglaló (10%): 2.660.000 Ft, szerződéskötéskor, legkésőbb 2026. november 30-ig",
+    possession: "A második részlet (23.940.000 Ft) 2027. január 4–8. között, földhivatali benyújtással és birtokbaadással",
+    bandNote: "600.000 Ft kedvezmény, ha november 30-ig szerződünk.",
+    perSqm: "kb. 25,4 ezer Ft/m²",
     summary:
-      "Ha a 28.450.000 Ft-ból további 750.000 Ft-ot szeretnél le, a visszaszámlálás lejártáig szerződést kötünk, és kifizeted az első részt, a foglalót: 2.770.000 Ft. A maradékot, 24.930.000 Ft-ot, 2027. január 4–8. között egy összegben utalod. A bizonylatot elküldöm az ügyvédednek, aki akár aznap beadhatja a nála várakozó szerződést a földhivatalba.",
-    ctaLabel: "Érdeklődöm a 27.700.000 Ft-os ütemre",
+      "Ha 2026. november 30-ig szerződést kötünk, és aláíráskor megfizeted a 2.660.000 Ft foglalót, a vételár 26,6 M Ft. A maradék 23.940.000 Ft 2027. január 4–8. között esedékes.",
+    ctaLabel: "Érdeklődöm a november 30-i kedvezményre",
   },
   b: {
     code: "b" as const,
-    optionLabel: "Használati korlátozás nélkül",
-    title: "28.450.000 Ft — használati korlátozás nélkül",
-    short: "28,45 M Ft",
-    listPrice: "28.450.000 Ft",
-    deposit: "A visszaszámlálás alatt, az eredeti 38 millió helyett",
-    possession: "Használati korlátozás nélkül a tiéd lehet",
-    bandNote: "Az elmúlt 2 év legjobb ajánlata. Januártól várhatóan 30 millió forint körül.",
-    perSqm: "kb. 27,2 ezer Ft/m²",
+    optionLabel: "Azonnali ár",
+    title: "Azonnali ár — 27.200.000 Ft",
+    short: "27,2 M Ft",
+    listPrice: "27.200.000 Ft",
+    deposit: "Szerződés szerint",
+    possession: "Azonnali, 2026-os birtokbaadás",
+    bandNote: "2026-os birtokbaadás, a jelenlegi berendezéssel együtt.",
+    perSqm: "kb. 26,0 ezer Ft/m²",
     summary:
-      "A visszaszámlálás lejártáig 28.450.000 Ft-ért a tiéd lehet, használati korlátozás nélkül. Ez az elmúlt két év legjobb ajánlata, az eredeti 38 millió forint helyett.",
-    ctaLabel: "Érdeklődöm a 28.450.000 Ft-os ajánlatra",
+      "A fix azonnali ár 27.200.000 Ft, a jelenlegi szerény berendezéssel együtt. A ház lakható, a birtokbaadás 2026-ban kérhető.",
+    ctaLabel: "Érdeklődöm az azonnali árra",
   },
   plotSqm: 1046,
-  originalPrice: "38.000.000 Ft",
-  originalPriceShort: "38 M Ft",
-  basePrice: "27.700.000 Ft",
-  basePriceShort: "27,7 M Ft",
-  firstInstallment: "2.770.000 Ft",
-  secondInstallment: "24.930.000 Ft",
-  discountAmount: "750.000 Ft",
-  immediatePrice: "28.450.000 Ft",
-  immediatePriceShort: "28,45 M Ft",
-  januaryReturn: "30 millió forint körül",
-  heroBadge: "Az elmúlt 2 év legjobb ajánlata",
+  basePrice: "26.600.000 Ft",
+  basePriceShort: "26,6 M Ft",
+  firstInstallment: "2.660.000 Ft",
+  secondInstallment: "23.940.000 Ft",
+  discountAmount: "600.000 Ft",
+  immediatePrice: "27.200.000 Ft",
+  immediatePriceShort: "27,2 M Ft",
+  heroBadge: "November 30-ig: −600.000 Ft",
   heroLead:
     "Péntek délután lekapcsolod a laptopot, beülsz az autóba, és 45 perc múlva akár már a Börzsöny erdeje vesz körül.",
-  pricingHeading: "Az elmúlt 2 év legjobb ajánlata",
-  scheduleTitle: "A további 750.000 Ft engedmény így működik:",
+  pricingHeading: "Vételár és fizetési ütemezés",
+  scheduleTitle: "A 26,6 M Ft feltétele:",
   scheduleTerms: [
-    "A visszaszámlálás lejártáig szerződést kötünk, és kifizeted az első részt, a foglalót: 2.770.000 Ft, a 27.700.000 Ft-os árból.",
-    "2027. január 4–8. között egy összegben utalod a maradékot, 24.930.000 Ft.",
-    "A bizonylatot elküldöm az ügyvédednek, aki akár aznap beadhatja a nála várakozó szerződést a földhivatalba.",
+    "A szerződést 2026. november 30-ig kötjük meg.",
+    "Az első részlet a vételár 10%-a, 2.660.000 Ft, szerződéskötéskor fizetendő.",
+    "A második részlet 23.940.000 Ft, 2027. január 4–8. között esedékes, a földhivatali benyújtással és a birtokbaadással egyidejűleg.",
   ] as const,
-  possessionNote:
-    "Januártól várhatóan ismét 30 millió forint körülre veszem vissza, és akkor már nem lesz sürgős az eladás. Most, december elejéig igen — ezért ez az ajánlat.",
-  ctaCardTitle: "28.450.000 Ft, használati korlátozás nélkül",
+  possessionNote: "Az ár fix, a jelenlegi szerény berendezéssel együtt értendő.",
+  ctaCardTitle: "November 30-ig: 26,6 M Ft",
   ctaCardBody:
-    "Az eredeti ár 38 millió forint volt. A visszaszámlálás alatt 28.450.000 Ft-ért a tiéd lehet, használati korlátozás nélkül. Ha további 750.000 Ft-tal kevesebbet szeretnél fizetni, a lejártáig szerződünk, a foglalót most rendezed, a maradékot pedig január 4–8. között utalod.",
+    "600.000 Ft-tal kevesebb, mint a 27,2 M Ft-os azonnali ár, ha a foglaló az aláíráskor megérkezik, a maradék pedig 2027. január 4–8. között.",
   fixturesNote: "Az ár a jelenlegi berendezéssel együtt értendő",
   premiumNote:
-    "Az eredeti ár 38 millió forint. A visszaszámlálás alatt, december elejéig, 28.450.000 Ft-ért a tiéd lehet, használati korlátozás nélkül — ez az elmúlt két év legjobb ajánlata. További 750.000 Ft engedmény (27.700.000 Ft) jár, ha addig szerződést kötünk, kifizeted a foglalót, és a maradékot 2027. január 4–8. között egy összegben utalod. A bizonylatot elküldöm az ügyvédednek, aki akár aznap beadhatja a nála várakozó szerződést a földhivatalba. Januártól várhatóan ismét 30 millió forint körülre veszem vissza, és akkor már nem lesz sürgős az eladás. Közvetítői jutalék nincs.",
+    "Az ár fix, a jelenlegi szerény berendezéssel együtt értendő, közvetítői jutalék nincs. Azonnali, 2026-os birtokbaadás: 27,2 M Ft. Ha 2026. november 30-ig szerződést kötünk, a vételár 26,6 M Ft.",
   marketNote:
-    "A ház tehermentes és lakható. A 28.450.000 Ft-os ajánlat használati korlátozás nélküli. A 27.700.000 Ft-os ütemnél a maradék január 4–8. között érkezik, és a földhivatali benyújtás akár a bizonylat napján megtörténhet.",
+    "A ház tehermentes és lakható. A 27,2 M Ft azonnali, 2026-os átadás. A 26,6 M Ft-nál a birtokbaadás 2027. január 4–8. között esedékes.",
 } as const;
 
 export const FAQ_ITEMS = [
   {
     q: "Alkudható az ár?",
-    a: "A visszaszámlálás alatt az ár fix: 28.450.000 Ft használati korlátozás nélkül, vagy 27.700.000 Ft a januári utalásos ütemmel. Alkudható nincs, közvetítői jutalék sincs. Januártól várhatóan 30 millió forint körülre veszem vissza, és akkor már nem lesz sürgős az eladás.",
+    a: "Nem. Az ár fix, közvetítői jutalék nincs. A november 30-ig élő 600.000 Ft a szerződéskötéshez kötött.",
   },
   {
     q: "Mi marad a házban?",
-    a: "A jelenlegi egyszerű berendezés a házban marad. (A tárolókból a személyes tárgyaimat elszállítom.)",
+    a: "A jelenlegi szerény berendezés a házban marad, az ár ezzel együtt értendő. A tárolókból a személyes tárgyaimat elszállítom.",
   },
   {
-    q: "Hogyan épül fel a fizetés?",
-    a: "A visszaszámlálás alatt 28.450.000 Ft-ért a tiéd lehet, használati korlátozás nélkül, az eredeti 38 millió helyett. Ha további 750.000 Ft engedményt szeretnél, 27.700.000 Ft az ár: a lejártáig szerződünk, a foglaló 2.770.000 Ft most esedékes, a maradék 24.930.000 Ft pedig 2027. január 4–8. között, egy összegben. A bizonylatot elküldöm az ügyvédednek, aki akár aznap beadhatja a nála várakozó szerződést a földhivatalba. Januártól várhatóan 30 millió forint körülre veszem vissza.",
+    q: "Hogyan épül fel a 26,6 M Ft?",
+    a: "2026. november 30-ig megkötött szerződésnél a vételár 26.600.000 Ft. A foglaló 2.660.000 Ft (10%) aláíráskor fizetendő. A második részlet 23.940.000 Ft 2027. január 4–8. között esedékes, a földhivatali benyújtással és a birtokbaadással egyidejűleg.",
   },
   {
-    q: "Azonnal beköltözhetek / kiadható a ház?",
-    a: "A ház lakható állapotú. A 28.450.000 Ft-os ajánlat használati korlátozás nélküli. A 27.700.000 Ft-os ütemnél a maradék és a földhivatali benyújtás 2027. január 4–8. között esedékes, a bizonylat napján akár azonnal. Csekély beruházás után hosszú távra kiadható, 150–200 ezer Ft + rezsi díjjal kalkulálva. Rövid távú szálláshelynek nem adom szívesen: a szerződésben nem tiltom, de tisztelettel kérem, hogy aki erre vállalkozna, ne érdeklődjön. Amíg a telek közepére felépül az új ház, a meglévő épület felvonulási épületként is használható.",
+    q: "Azonnal beköltözhetek?",
+    a: "A 27,2 M Ft-os árnál a birtokbaadás 2026-ban kérhető. A 26,6 M Ft-nál a birtokbaadás 2027. január 4–8. között esedékes. A ház lakható.",
   },
   {
     q: "Hitelezhető a telek?",
@@ -143,15 +138,15 @@ export const PROCESS_STEPS = [
   },
   {
     title: "Döntés",
-    body: "A visszaszámlálás alatt: 28.450.000 Ft használati korlátozás nélkül, vagy további 750.000 Ft engedménnyel 27.700.000 Ft. Januártól várhatóan 30 millió forint körül.",
+    body: "Választás: november 30-i kedvezmény (26.600.000 Ft) vagy azonnali ár (27.200.000 Ft).",
   },
   {
     title: "Szerződéskötés",
-    body: "Ügyvéd előtt, még a visszaszámlálás alatt. A 27.700.000 Ft-os árnál ekkor esedékes a 2.770.000 Ft foglaló is.",
+    body: "Ügyvéd előtt. Kedvezménynél az aláírás és a 2.660.000 Ft foglaló legkésőbb 2026. november 30-ig esedékes.",
   },
   {
-    title: "Fizetés és földhivatal",
-    body: "A maradék 24.930.000 Ft 2027. január 4–8. között érkezik, egy összegben. A bizonylatot elküldöm az ügyvédednek, aki akár aznap beadhatja a nála várakozó szerződést a földhivatalba.",
+    title: "Fizetés és birtokbaadás",
+    body: "Kedvezménynél a második részlet (23.940.000 Ft) 2027. január 4–8. között fizetendő, a földhivatali benyújtással és a birtokbaadással együtt. Azonnali árnál a birtokbaadás 2026-ban történik.",
   },
 ] as const;
 
