@@ -150,7 +150,6 @@ const hu = {
     days: "nap",
     hours: "óra",
     minutes: "perc",
-    seconds: "mp",
   },
   place: {
     title: "Miről szól ez a hely?",
@@ -454,7 +453,6 @@ const en: Copy = localeCopy({
     days: "days",
     hours: "hours",
     minutes: "min",
-    seconds: "sec",
   },
   place: {
     ...hu.place,
@@ -752,7 +750,6 @@ const de: Copy = localeCopy({
     days: "Tage",
     hours: "Std.",
     minutes: "Min.",
-    seconds: "Sek.",
   },
   place: {
     ...hu.place,

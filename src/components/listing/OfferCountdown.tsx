@@ -12,7 +12,6 @@ type Remaining = {
   days: number;
   hours: number;
   minutes: number;
-  seconds: number;
 };
 
 function remaining(now: number): Remaining {
@@ -23,7 +22,6 @@ function remaining(now: number): Remaining {
     days: Math.floor(total / 86400),
     hours: Math.floor((total % 86400) / 3600),
     minutes: Math.floor((total % 3600) / 60),
-    seconds: total % 60,
   };
 }
 
@@ -41,7 +39,6 @@ export function OfferCountdown({ tone = "dark" }: { tone?: "dark" | "light" }) {
     [t.countdown.days, "days"],
     [t.countdown.hours, "hours"],
     [t.countdown.minutes, "minutes"],
-    [t.countdown.seconds, "seconds"],
   ] as const;
 
   const dark = tone === "dark";
@@ -63,7 +60,8 @@ export function OfferCountdown({ tone = "dark" }: { tone?: "dark" | "light" }) {
     <div className="mt-4">
       <p className={`text-xs font-semibold uppercase tracking-[0.14em] ${caption}`}>{t.countdown.until}</p>
       <div
-        className="mt-2 grid grid-cols-4 gap-2"
+        className="mt-2 grid grid-cols-3 gap-2"
+        style={{ gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}
         aria-label={`${t.countdown.remaining}: ${time.days} ${t.countdown.days}, ${time.hours} ${t.countdown.hours}, ${time.minutes} ${t.countdown.minutes}`}
       >
         {units.map(([label, key]) => (
