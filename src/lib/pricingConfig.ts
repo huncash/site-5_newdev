@@ -293,10 +293,10 @@ export function applyOffer(base: Copy, lang: Lang, offer: ResolvedOffer): Copy {
           : `The current price is ${immediateFull}, with immediate handover in ${year}. The price includes the current furnishings.`;
     next.faq.items[3].a =
       lang === "hu"
-        ? `Igen. A ${immediate} árnál a birtokbaadás ${year}-ban kérhető. A ház lakható. Csekély beruházás után hosszú távra kiadható, 150–200 ezer Ft + rezsi mellett.`
+        ? `Igen. A ${immediate} árnál a birtokbaadás ${year}-ban kérhető. A telek tetején álló faház azonnal lakható bázis és felvonulási épület az építkezés idejére. A megépülő új ház saját otthonként vagy hosszú távra kiadható lakóházként hasznosítható.`
         : lang === "de"
-          ? `Ja. Bei ${immediate} kann die Übergabe ${year} erfolgen. Das Haus ist bewohnbar. Nach einer kleinen Investition ist es langfristig vermietbar, gerechnet mit 150.000–200.000 HUF plus Nebenkosten.`
-          : `Yes. At ${immediate}, possession can be taken in ${year}. The house is livable. After a modest investment it can be let long-term at about HUF 150,000–200,000 plus utilities.`;
+          ? `Ja. Bei ${immediate} kann die Übergabe ${year} erfolgen. Das Holzhaus oben ist sofort bewohnbare Basis und Bauunterkunft für die Bauzeit. Das neue Haus ist das dauerhafte Eigenheim oder das langfristig vermietbare Wohnhaus.`
+          : `Yes. At ${immediate}, possession can be taken in ${year}. The wooden house at the top is an immediately livable base and site office during construction. The new house is the permanent family residence or the long-term rental house.`;
     next.contact.lead =
       lang === "hu"
         ? "Használd az űrlapot, vagy — adatkezelés elfogadása után — hívd a védett számot. Az aktuális ár azonnali birtokbaadással jár."
@@ -493,10 +493,10 @@ export function applyOffer(base: Copy, lang: Lang, offer: ResolvedOffer): Copy {
         : `If the contract is signed ${until}, the price is ${deferredFull}. The deposit of ${deposit} (10%) is paid on signing. The second instalment of ${balance} is due ${balanceWhen}, together with the Land Registry filing and handover of possession. The price includes the current furnishings.`;
   next.faq.items[3].a =
     lang === "hu"
-      ? `A ${immediate} árnál a birtokbaadás ${year}-ban kérhető. A ${deferredShort} árnál a birtokbaadás ${balanceWhen} esedékes. A ház lakható. Csekély beruházás után hosszú távra kiadható, 150–200 ezer Ft + rezsi mellett.`
+      ? `A ${immediate} árnál a birtokbaadás ${year}-ban kérhető. A ${deferredShort} árnál a birtokbaadás ${balanceWhen} esedékes. A telek tetején álló faház azonnal lakható bázis és felvonulási épület az építkezés idejére. A megépülő új ház saját otthonként vagy hosszú távra kiadható lakóházként hasznosítható.`
       : lang === "de"
-        ? `Bei ${immediate} kann die Übergabe ${year} erfolgen. Bei ${deferredShort} liegt sie ${balanceWhen}. Das Haus ist bewohnbar. Nach einer kleinen Investition ist es langfristig vermietbar, gerechnet mit 150.000–200.000 HUF plus Nebenkosten.`
-        : `At ${immediate}, possession can be taken in ${year}. At ${deferredShort}, possession is ${balanceWhen}. The house is livable. After a modest investment it can be let long-term at about HUF 150,000–200,000 plus utilities.`;
+        ? `Bei ${immediate} kann die Übergabe ${year} erfolgen. Bei ${deferredShort} liegt sie ${balanceWhen}. Das Holzhaus oben ist sofort bewohnbare Basis und Bauunterkunft für die Bauzeit. Das neue Haus ist das dauerhafte Eigenheim oder das langfristig vermietbare Wohnhaus.`
+        : `At ${immediate}, possession can be taken in ${year}. At ${deferredShort}, possession is ${balanceWhen}. The wooden house at the top is an immediately livable base and site office during construction. The new house is the permanent family residence or the long-term rental house.`;
   next.contact.lead =
     lang === "hu"
       ? `Használd az űrlapot, vagy — adatkezelés elfogadása után — hívd a védett számot. Ha a ${until} élő ár vagy az azonnali ár érdekel, jelezd az üzenetben.`
