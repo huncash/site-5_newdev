@@ -153,6 +153,8 @@ const hu = {
   },
   place: {
     title: "Miről szól ez a hely?",
+    overviewAlt:
+      "A lejtős telek áttekintő rajza: lent a kocsibeálló és a lépcső, fent a telek tetején az azonnal lakható faház és a melléképület",
     kicker: "Mikroklíma & szomszédság",
     p1: "Kismaros-Börzsönyligeten, egy zsákutca végén, a Duna–Ipoly Nemzeti Park szélén fekszik ez a 1046 m²-es belterületi lakótelek. A telek tetején fehér ablakos, azonnal lakható faház áll, teljes közművel. Nincs szomszéd az ablakban, nincs átmenő forgalom, csak a fák, a madarak és a csend. Nyáron az erdei mikroklíma átlagosan 4 °C-kal hűvösebb, mint a városban, télen pedig a cserépkályha melege tölti be a házat.",
     p2: "Itt lakva, itt ébredve, a nyári szezonon kívüli időszakban mutatja meg igazán gyönyörű arcát ez a börzsönyi, Natura 2000-es ősfás tölgyerdő. A ház egész évben lakható: vezetékes ivóvíz, villany, cserépkályha és zárt szennyvíztároló van benne.",
@@ -331,7 +333,7 @@ const hu = {
   faq: {
     title: "Gyakori kérdések",
     items: [
-      { q: "Alkudható az ár?", a: "Nem. Az ár fix, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. A november 30-ig élő 600.000 Ft a szerződéskötéshez kötött, nem alku." },
+      { q: "Alkudható az ár?", a: "Nem. Az ár fix, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. A 2026. november 30-ig élő 600.000 Ft kedvezmény a szerződéskötéshez kötött." },
       { q: "Mi marad a házban?", a: "A jelenlegi szerény berendezés a házban marad, az ár ezzel együtt értendő. A tárolókból a személyes tárgyaimat elszállítom." },
       { q: "Hogyan épül fel a 26,6 M Ft?", a: "2026. november 30-ig megkötött szerződésnél a vételár 26.600.000 Ft. A foglaló 2.660.000 Ft (10%) aláíráskor fizetendő. A második részlet 23.940.000 Ft 2027. január 4–8. között esedékes, a földhivatali benyújtással és a birtokbaadással egyidejűleg. Az ár a jelenlegi berendezéssel együtt értendő." },
       { q: "Azonnal beköltözhetek?", a: "A 27,2 M Ft-os árnál a birtokbaadás 2026-ban kérhető. A 26,6 M Ft-nál a birtokbaadás 2027. január 4–8. között esedékes. A telek tetején álló faház azonnal lakható bázis és felvonulási épület az építkezés idejére. A megépülő új ház saját otthonként vagy hosszú távra kiadható lakóházként hasznosítható." },
@@ -470,6 +472,8 @@ const en: Copy = localeCopy({
   place: {
     ...hu.place,
     title: "What is this place about?",
+    overviewAlt:
+      "Overview drawing of the sloping plot: driveway and stairs below, the immediately livable wooden house and outbuilding at the top",
     kicker: "Microclimate & neighbours",
     p1: "This 1046 m² in-settlement residential plot lies at the end of a cul-de-sac in Kismaros-Börzsönyliget, on the edge of the Danube-Ipoly National Park. At the top of the plot stands an immediately livable wooden house with white windows and full utilities. No neighbour in the window, no through traffic — trees, birds and quiet. In summer the forest microclimate is about 4 °C cooler than the city; in winter the tile stove fills the house.",
     p2: "Living here and waking up here, outside the summer season, is when this ancient oak wood in the Börzsöny Natura 2000 area shows its real face. The house is livable all year: mains drinking water, electricity, a tile stove and closed sewage storage.",
@@ -780,6 +784,8 @@ const de: Copy = localeCopy({
   place: {
     ...hu.place,
     title: "Worum geht es an diesem Ort?",
+    overviewAlt:
+      "Übersichtsskizze des Hanggrundstücks: unten Einfahrt und Treppe, oben das sofort bewohnbare Holzhaus und das Nebengebäude",
     kicker: "Mikroklima & Nachbarschaft",
     p1: "Dieses 1046 m² große Wohnbaugrundstück im Innenbereich liegt in Kismaros-Börzsönyliget am Ende einer Sackgasse, am Rand des Donau-Ipoly-Nationalparks. Oben auf dem Grundstück steht ein sofort bewohnbares Holzhaus mit weißen Fenstern und voller Versorgung. Kein Nachbar im Fenster, kein Durchgangsverkehr — Bäume, Vögel und Ruhe. Im Sommer ist das Waldmikroklima im Schnitt 4 °C kühler als in der Stadt, im Winter füllt der Kachelofen das Haus.",
     p2: "Wer hier wohnt und hier aufwacht, sieht außerhalb der Sommersaison das eigentliche Gesicht dieses alten Eichenwaldes im Natura-2000-Gebiet des Börzsöny. Das Haus ist das ganze Jahr bewohnbar: Leitungswasser, Strom, Kachelofen und geschlossene Abwassersammlung.",

@@ -475,7 +475,7 @@ export function applyOffer(base: Copy, lang: Lang, offer: ResolvedOffer): Copy {
 
   next.faq.items[0].a =
     lang === "hu"
-      ? `Az ár fix, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. A ${until} élő ${discount} a szerződéskötéshez kötött.`
+      ? `Az ár fix, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. A ${until} élő ${discount} kedvezmény a szerződéskötéshez kötött.`
       : lang === "de"
         ? `Der Preis ist fest, eine Maklerprovision gibt es nicht — du kaufst direkt von mir. Der ${until} geltende Nachlass von ${discount} hängt am Vertrag.`
         : `The price is fixed and there is no agency fee — you buy directly from me, the sole owner. The reduction of ${discount}, open ${until}, is tied to signing the contract.`;

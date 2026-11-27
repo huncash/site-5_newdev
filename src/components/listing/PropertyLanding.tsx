@@ -29,7 +29,7 @@ import {
 } from "@/components/listing/ListingContact";
 import { ListingTopoMap } from "@/components/listing/ListingTopoMap";
 import { LanguageSwitcher, useI18n } from "@/lib/i18n";
-import { HERO_IMAGE, LISTING_LOGO, PHOTOS, TOUR_URL, UTILITY_PHOTOS } from "@/lib/listing";
+import { HERO_IMAGE, LISTING_LOGO, PHOTOS, PLOT_OVERVIEW_IMAGE, TOUR_URL, UTILITY_PHOTOS } from "@/lib/listing";
 
 type Lightbox =
   | { kind: "gallery"; index: number }
@@ -261,6 +261,14 @@ export function PropertyLanding() {
         </section>
 
         <section className="mx-auto max-w-6xl scroll-mt-24 px-4 py-14 md:px-6 md:py-16 lg:py-20" id="elhelyezkedes">
+          <figure className="mb-10 overflow-hidden rounded-lg">
+            <img
+              src={PLOT_OVERVIEW_IMAGE.src}
+              alt={t.place.overviewAlt}
+              className="h-auto w-full"
+              decoding="async"
+            />
+          </figure>
           <h2 className="text-3xl font-medium">{t.place.title}</h2>
           <p className="mt-2 text-sm uppercase tracking-[0.14em] text-[#6b6154]">{t.place.kicker}</p>
           <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-[#5a5146] sm:text-base">

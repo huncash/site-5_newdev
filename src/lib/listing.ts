@@ -12,6 +12,11 @@ export const HERO_IMAGE = {
   alt: "Barna faház fehér ablakokkal, betonlépcsővel és a középső beépítési szinttel a tölgyesben",
 } as const;
 
+/** Lejtős telek áttekintő rajza — a galérián kívül, a helyleírás előtt. */
+export const PLOT_OVERVIEW_IMAGE = {
+  src: "/hirdetes/telek-attekinto.jpg",
+} as const;
+
 export const LISTING_LOGO = {
   src: "/hirdetes/logo-tolgyes.png",
   alt: "Kismaros–Börzsönyliget — ősfás tölgyes és kabin sziluett",
