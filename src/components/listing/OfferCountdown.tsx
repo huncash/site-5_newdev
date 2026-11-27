@@ -3,9 +3,6 @@
 import { useEffect, useState } from "react";
 
 import { useI18n } from "@/lib/i18n";
-import { OFFER_DEADLINE } from "@/lib/listing";
-
-const DEADLINE_MS = new Date(OFFER_DEADLINE).getTime();
 
 type Remaining = {
   expired: boolean;
@@ -14,8 +11,8 @@ type Remaining = {
   minutes: number;
 };
 
-function remaining(now: number): Remaining {
-  const diff = Math.max(0, DEADLINE_MS - now);
+function remaining(now: number, deadlineMs: number): Remaining {
+  const diff = Math.max(0, deadlineMs - now);
   const total = Math.floor(diff / 1000);
   return {
     expired: diff <= 0,
@@ -26,8 +23,9 @@ function remaining(now: number): Remaining {
 }
 
 export function OfferCountdown({ tone = "dark" }: { tone?: "dark" | "light" }) {
-  const { t } = useI18n();
+  const { t, offer } = useI18n();
   const [now, setNow] = useState<number | null>(null);
+  const deadlineMs = offer.countdownDeadline ? new Date(offer.countdownDeadline).getTime() : null;
 
   useEffect(() => {
     setNow(Date.now());
@@ -45,16 +43,15 @@ export function OfferCountdown({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const frame = dark ? "border-[#e8b84a]/40 bg-[#142e22]" : "border-[#d4c9b5] bg-[#fffdf8]";
   const number = dark ? "text-[#e8b84a]" : "text-[#0f2e1f]";
   const caption = dark ? "text-[#f7f1e6]/75" : "text-[#6b6154]";
-  const note = dark ? "text-[#f7f1e6]/90" : "text-[#5a5146]";
+
+  if (!deadlineMs) return null;
 
   if (now === null) {
     return <div className={`mt-4 h-[92px] rounded-lg border ${frame}`} aria-hidden />;
   }
 
-  const time = remaining(now);
-  if (time.expired) {
-    return <p className={`mt-4 text-sm leading-relaxed ${note}`}>{t.countdown.expired}</p>;
-  }
+  const time = remaining(now, deadlineMs);
+  if (time.expired) return null;
 
   return (
     <div className="mt-4">

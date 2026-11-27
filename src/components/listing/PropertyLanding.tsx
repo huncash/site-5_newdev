@@ -74,7 +74,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export function PropertyLanding() {
-  const { t, lang, href, eurNote } = useI18n();
+  const { t, lang, href, eurNote, offer } = useI18n();
   const [open, setOpen] = useState<Lightbox>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -236,8 +236,17 @@ export function PropertyLanding() {
               <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/85">
                 {t.hero.place}{" "}
                 <strong className="font-semibold text-[#e8b84a]">{t.hero.immediateLabel}: {t.hero.immediatePrice}</strong>
-                .{" "}
-                <strong className="font-semibold text-[#e8b84a]">{t.hero.specialLabel}: {t.hero.specialPrice}</strong>.
+                {offer.deferred ? (
+                  <>
+                    .{" "}
+                    <strong className="font-semibold text-[#e8b84a]">
+                      {t.hero.specialLabel}: {t.hero.specialPrice}
+                    </strong>
+                    .
+                  </>
+                ) : (
+                  "."
+                )}
               </p>
               {eurNote ? <p className="mt-2 text-xs leading-relaxed text-[#f7f1e6]/75">{eurNote}</p> : null}
               <a
@@ -259,6 +268,15 @@ export function PropertyLanding() {
             <p>{t.place.p2}</p>
             <p>{t.place.p3}</p>
             <p>{t.place.p4}</p>
+          </div>
+          <h3 className="mt-10 text-2xl font-medium">{t.lifestyles.title}</h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            {t.lifestyles.cards.map((card) => (
+              <article key={card.title} className="rounded-lg border border-[#d4c9b5] border-t-4 border-t-[#e8b84a] bg-[#efe8db] p-5">
+                <h3 className="text-lg font-medium">{card.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{card.body}</p>
+              </article>
+            ))}
           </div>
 
           <div className="mt-12">
@@ -522,48 +540,56 @@ export function PropertyLanding() {
             {eurNote ? <p className="mt-2 max-w-3xl text-xs leading-relaxed text-[#6b6154]">{eurNote}</p> : null}
             <OfferCountdown tone="light" />
 
-            <dl className="mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
+            <dl className={`mt-8 grid max-w-3xl gap-4 ${offer.deferred ? "sm:grid-cols-2" : ""}`}>
               <div className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
                 <dt className="text-sm text-[#5a5146]">{t.pricing.standardLabel}</dt>
                 <dd className="mt-1 text-3xl font-medium text-[#d4a017]">{t.pricing.standardPrice}</dd>
                 <dd className="mt-2 text-sm leading-relaxed text-[#5a5146]">{t.pricing.standardNote}</dd>
               </div>
-              <div className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
-                <dt className="text-sm text-[#5a5146]">{t.pricing.specialLabel}</dt>
-                <dd className="mt-1 text-3xl font-medium text-[#d4a017]">{t.pricing.specialPrice}</dd>
-                <dd className="mt-2 text-sm leading-relaxed text-[#5a5146]">{t.pricing.specialNote}</dd>
-              </div>
+              {offer.deferred ? (
+                <div className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
+                  <dt className="text-sm text-[#5a5146]">{t.pricing.specialLabel}</dt>
+                  <dd className="mt-1 text-3xl font-medium text-[#d4a017]">{t.pricing.specialPrice}</dd>
+                  <dd className="mt-2 text-sm leading-relaxed text-[#5a5146]">{t.pricing.specialNote}</dd>
+                </div>
+              ) : null}
             </dl>
 
-            <aside className="mt-6 max-w-3xl rounded-lg border border-[#e8b84a]/50 bg-[#efe8db] p-5">
-              <p className="text-sm font-medium text-[#241f18]">{t.pricing.scheduleTitle}</p>
-              <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-[#5a5146]">
-                {t.pricing.schedule.map((term) => (
-                  <li key={term}>{term}</li>
-                ))}
-              </ol>
-              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{t.pricing.fixedNote}</p>
-            </aside>
+            {offer.deferred ? (
+              <aside className="mt-6 max-w-3xl rounded-lg border border-[#e8b84a]/50 bg-[#efe8db] p-5">
+                <p className="text-sm font-medium text-[#241f18]">{t.pricing.scheduleTitle}</p>
+                <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-[#5a5146]">
+                  {t.pricing.schedule.map((term) => (
+                    <li key={term}>{term}</li>
+                  ))}
+                </ol>
+                <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{t.pricing.fixedNote}</p>
+              </aside>
+            ) : null}
 
-            <div className="mt-8 max-w-3xl rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5">
-              <p className="text-base font-medium text-[#241f18]">{t.pricing.cardTitle}</p>
-              <p className="mt-2 text-sm leading-relaxed text-[#5a5146]">{t.pricing.cardBody}</p>
-            </div>
+            {offer.deferred ? (
+              <div className="mt-8 max-w-3xl rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5">
+                <p className="text-base font-medium text-[#241f18]">{t.pricing.cardTitle}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#5a5146]">{t.pricing.cardBody}</p>
+              </div>
+            ) : null}
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5 md:p-6">
-                <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">{t.variants.a.label}</p>
-                <p className="mt-2 text-3xl font-medium text-[#d4a017]">{t.variants.a.short}</p>
-                <p className="mt-1 text-xs text-[#6b6154]">{t.variants.a.note}</p>
-                <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{t.variants.a.summary}</p>
-                <Link
-                  href={href("/erdeklodes/a")}
-                  onClick={() => trackListingCta("variant_a")}
-                  className="mt-6 inline-flex justify-center rounded-md bg-[#e8b84a] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
-                >
-                  {t.variants.a.cta}
-                </Link>
-              </article>
+            <div className={`mt-8 grid gap-4 ${offer.deferred ? "md:grid-cols-2" : ""}`}>
+              {offer.deferred ? (
+                <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5 md:p-6">
+                  <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">{t.variants.a.label}</p>
+                  <p className="mt-2 text-3xl font-medium text-[#d4a017]">{t.variants.a.short}</p>
+                  <p className="mt-1 text-xs text-[#6b6154]">{t.variants.a.note}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{t.variants.a.summary}</p>
+                  <Link
+                    href={href("/erdeklodes/a")}
+                    onClick={() => trackListingCta("variant_a")}
+                    className="mt-6 inline-flex justify-center rounded-md bg-[#e8b84a] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
+                  >
+                    {t.variants.a.cta}
+                  </Link>
+                </article>
+              ) : null}
               <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#d4a017] bg-[#efe8db] p-5 md:p-6">
                 <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">{t.variants.b.label}</p>
                 <p className="mt-2 text-3xl font-medium text-[#d4a017]">{t.variants.b.short}</p>

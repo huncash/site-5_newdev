@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 
 import { PropertyLanding } from "@/components/listing/PropertyLanding";
+import { copy } from "@/lib/copy";
+import { applyOffer, resolvePricing } from "@/lib/pricingConfig";
 
-export const metadata: Metadata = {
-  title: { absolute: "Erdei faház Börzsönyligeten — 1046 m² privát telek" },
-  description:
-    "Kismaros-Börzsönyliget, zsákutca vége. 1046 m² saját telek. Azonnali ár 27,2 M Ft; november 30-ig 26,6 M Ft. Vezetékes ivóvíz.",
+export const revalidate = 3600;
+
+export function generateMetadata(): Metadata {
+  const text = applyOffer(copy.hu, "hu", resolvePricing(new Date()));
+  return {
+  title: { absolute: text.metaTitle },
+  description: text.metaDescription,
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Erdei faház Börzsönyligeten — 1046 m² privát telek",
-    description:
-      "45 perc, és a Börzsöny erdeje vesz körül. Azonnali ár 27,2 M Ft, november 30-ig 26,6 M Ft.",
+    title: text.metaTitle,
+    description: text.metaDescription,
     url: "https://eladoingatlan.szcenario.hu/",
     images: [
       {
@@ -21,7 +25,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+  };
+}
 
 export default function ListingPage() {
   return <PropertyLanding />;

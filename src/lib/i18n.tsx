@@ -12,12 +12,14 @@ import {
 
 import { copy, type Copy, type Lang } from "@/lib/copy";
 import { annotateCopy, eurRateNote, type EurQuote } from "@/lib/money";
+import { applyOffer, parsePreviewDate, resolvePricing, type ResolvedOffer } from "@/lib/pricingConfig";
 
 const STORAGE_KEY = "listing-lang";
 
 type I18nValue = {
   lang: Lang;
   t: Copy;
+  offer: ResolvedOffer;
   eurNote: string | null;
   setLang: (lang: Lang) => void;
   href: (path: string) => string;
@@ -45,15 +47,24 @@ function readLang(): Lang {
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("hu");
   const [eur, setEur] = useState<EurQuote | null>(null);
+  const [clock, setClock] = useState(() => new Date());
+  const [previewKey, setPreviewKey] = useState<string | null>(null);
 
   useEffect(() => {
     const next = readLang();
     setLangState(next);
     const url = new URL(window.location.href);
+    const rawPreview = url.searchParams.get("previewDate");
+    setPreviewKey(parsePreviewDate(rawPreview) ? rawPreview : null);
     if (url.searchParams.get("lang") !== next) {
       url.searchParams.set("lang", next);
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
+  }, []);
+
+  useEffect(() => {
+    const id = window.setInterval(() => setClock(new Date()), 30_000);
+    return () => window.clearInterval(id);
   }, []);
 
   const setLang = useCallback((next: Lang) => {
@@ -85,11 +96,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     };
   }, [lang]);
 
+  const offer = useMemo(
+    () => resolvePricing(parsePreviewDate(previewKey) ?? clock),
+    [previewKey, clock],
+  );
+
   const t = useMemo(() => {
-    const base = copy[lang];
+    const base = applyOffer(copy[lang], lang, offer);
     if (lang === "hu" || !eur) return base;
     return annotateCopy(base, lang, eur.hufPerEur);
-  }, [lang, eur]);
+  }, [lang, eur, offer]);
 
   const eurNote = lang === "hu" || !eur ? null : eurRateNote(lang, eur);
 
@@ -122,12 +138,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const pathname = splitAt >= 0 ? base.slice(0, splitAt) : base;
     const params = new URLSearchParams(splitAt >= 0 ? base.slice(splitAt + 1) : "");
     params.set("lang", lang);
+    if (previewKey) params.set("previewDate", previewKey);
     return `${pathname || "/"}${params.toString() ? `?${params.toString()}` : ""}${hash}`;
-  }, [lang]);
+  }, [lang, previewKey]);
 
   const value = useMemo<I18nValue>(
-    () => ({ lang, t, eurNote, setLang, href }),
-    [lang, t, eurNote, setLang, href],
+    () => ({ lang, t, offer, eurNote, setLang, href }),
+    [lang, t, offer, eurNote, setLang, href],
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

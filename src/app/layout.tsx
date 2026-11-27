@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { LanguageProvider } from "@/lib/i18n";
+import { copy } from "@/lib/copy";
+import { applyOffer, resolvePricing } from "@/lib/pricingConfig";
 
 import "./globals.css";
 import "./listing-fonts.css";
@@ -14,14 +16,15 @@ const OG_IMAGE = {
   type: "image/jpeg",
 } as const;
 
+const listingMeta = applyOffer(copy.hu, "hu", resolvePricing(new Date()));
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Erdei faház Börzsönyligeten — 1046 m² privát telek",
+    default: listingMeta.metaTitle,
     template: "%s · eladoingatlan.szcenario.hu",
   },
-  description:
-    "Kismaros-Börzsönyliget, zsákutca vége. 1046 m² saját telek. Azonnali ár 27,2 M Ft; november 30-ig 26,6 M Ft. Vezetékes ivóvíz.",
+  description: listingMeta.metaDescription,
   icons: {
     icon: [
       { url: "/hirdetes/favicon.ico", sizes: "any" },
@@ -37,16 +40,14 @@ export const metadata: Metadata = {
     locale: "hu_HU",
     url: SITE_URL,
     siteName: "eladoingatlan.szcenario.hu",
-    title: "Erdei faház Börzsönyligeten — 1046 m² privát telek",
-    description:
-      "45 perc, és a Börzsöny erdeje vesz körül. Azonnali ár 27,2 M Ft, november 30-ig 26,6 M Ft.",
+    title: listingMeta.metaTitle,
+    description: listingMeta.metaDescription,
     images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Erdei faház Börzsönyligeten — 1046 m² privát telek",
-    description:
-      "45 perc, és a Börzsöny erdeje vesz körül. Azonnali ár 27,2 M Ft, november 30-ig 26,6 M Ft.",
+    title: listingMeta.metaTitle,
+    description: listingMeta.metaDescription,
     images: [OG_IMAGE.url],
   },
 };

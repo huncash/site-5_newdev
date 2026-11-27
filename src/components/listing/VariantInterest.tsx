@@ -8,10 +8,12 @@ import { ListingPhoneProvider, ListingSellerCard } from "@/components/listing/Li
 import { LISTING_LOGO, type ListingVariant } from "@/lib/listing";
 
 export function VariantInterest({ variant }: { variant: ListingVariant }) {
-  const { t, lang, href, eurNote } = useI18n();
-  const selected = t.variants[variant];
-  const other: ListingVariant = variant === "a" ? "b" : "a";
+  const { t, lang, href, eurNote, offer } = useI18n();
+  const active: ListingVariant = offer.deferred || variant === "b" ? variant : "b";
+  const selected = t.variants[active];
+  const other: ListingVariant = active === "a" ? "b" : "a";
   const otherOffer = t.variants[other];
+  const rows = offer.deferred ? (["a", "b"] as const) : (["b"] as const);
 
   return (
     <ListingPhoneProvider>
@@ -100,11 +102,11 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {(["a", "b"] as const).map((code) => (
-                    <tr key={code} className={variant === code ? "bg-[#f5edd4]" : ""}>
+                  {rows.map((code) => (
+                    <tr key={code} className={active === code ? "bg-[#f5edd4]" : ""}>
                       <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
                         {t.variants[code].label}
-                        {variant === code ? ` · ${t.interest.watching}` : ""}
+                        {active === code ? ` · ${t.interest.watching}` : ""}
                       </td>
                       <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                         {t.variants[code].price}
@@ -117,12 +119,14 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
             </div>
           </section>
 
-          <p className="mt-4 text-sm text-[#5a5146]">
-            {t.interest.other}:{" "}
-            <Link href={href(`/erdeklodes/${other}`)} className="font-semibold underline">
-              {otherOffer.title}
-            </Link>
-          </p>
+          {offer.deferred ? (
+            <p className="mt-4 text-sm text-[#5a5146]">
+              {t.interest.other}:{" "}
+              <Link href={href(`/erdeklodes/${other}`)} className="font-semibold underline">
+                {otherOffer.title}
+              </Link>
+            </p>
+          ) : null}
 
           <section className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>

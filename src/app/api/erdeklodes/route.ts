@@ -1,4 +1,5 @@
 import { copy, type Lang } from "@/lib/copy";
+import { applyOffer, resolvePricing } from "@/lib/pricingConfig";
 import { appendEnquiryToFile, deliverEnquiry } from "@/lib/quote-delivery";
 
 const MAX_NAME = 120;
@@ -65,7 +66,7 @@ export async function POST(request: Request): Promise<Response> {
 
   const rawLang = typeof data.lang === "string" ? data.lang.trim().toLowerCase() : "";
   const lang: Lang = rawLang === "en" || rawLang === "de" || rawLang === "hu" ? rawLang : "hu";
-  const labels = copy.hu.variants;
+  const labels = applyOffer(copy.hu, "hu", resolvePricing(new Date())).variants;
   const optionLabel =
     variant === "A" ? labels.a.email : variant === "B" ? labels.b.email : null;
   const variantLine = optionLabel ? `Konstrukció: ${optionLabel}` : "Konstrukció: nem jelölt";
